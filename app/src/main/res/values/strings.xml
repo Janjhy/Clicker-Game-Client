@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">ClickerGame</string>
+    <string name="your_points">Your points:</string>
+    <string name="play">Play</string>
+    <string name="reset">Reset points</string>
+    <string name="not_available">n/a</string>
+    <string name="clicks_to_next_prize">Clicks to next prize:</string>
+    <string name="play_once_to_show_required_clicks_for_prize">Play to show required clicks</string>
+    <string name="no_points">You have run out of points, please reset to play</string>
+    <string name="id_key">com.example.clickergame.ID_KEY</string>
+    <string name="points_key">com.example.clickergame.POINTS_KEY</string>
+    <string name="display_points_error">Could not display points.</string>
+</resources>
