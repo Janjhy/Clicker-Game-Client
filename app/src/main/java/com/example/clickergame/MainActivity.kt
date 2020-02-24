@@ -3,7 +3,6 @@ package com.example.clickergame
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
 import org.java_websocket.client.WebSocketClient
@@ -65,7 +64,6 @@ class MainActivity : AppCompatActivity() {
                 setID(message[1])
             }
             else -> {
-                Log.d("MSG", "Invalid message ($message) from server.")
             }
         }
     }
@@ -88,7 +86,6 @@ class MainActivity : AppCompatActivity() {
                 apply()
             }
         } else {
-            Log.d("ID", "An id already exists.")
             return
         }
     }
@@ -120,7 +117,6 @@ class MainActivity : AppCompatActivity() {
         val sharedPref = this.getPreferences(Context.MODE_PRIVATE)
         val pointsString = sharedPref.getString(getString(R.string.points_key), null)
         if(pointsString != null) {
-            Log.d("getPoints", pointsString)
             tv_points.text = pointsString
         }
         else {
@@ -158,7 +154,6 @@ class MainActivity : AppCompatActivity() {
                 socket = ClientWebSocket(address)
                 try {
                     socket.connect()
-                    Log.d("socket", "connected")
 
                 } catch (e: Exception) {
                     println("Exception: ${e.message}")
@@ -184,7 +179,6 @@ class MainActivity : AppCompatActivity() {
         override fun run() {
             try {
                 socket.send(this.message)
-                Log.d("MSG", "sent message (${this.message})")
             } catch (e: Exception) {
                 println("Exception: ${e.message} 1")
             }
@@ -195,23 +189,19 @@ class MainActivity : AppCompatActivity() {
     inner class ClientWebSocket(serverURI: URI?) :
         WebSocketClient(serverURI) {
         override fun onOpen(handshakedata: ServerHandshake?) {
-            Log.i("Websocket", "Opened (${handshakedata.toString()})")
             if (idExists()) {
                 getID()?.let { sendMsg("ID $it") }
                 getPoints()
-                Log.d("id", "exists")
             } else {
                 sendMsg("noID")
             }
         }
 
         override fun onClose(code: Int, reason: String?, remote: Boolean) {
-            Log.i("Websocket", "closed ($reason)")
         }
 
 
         override fun onMessage(message: String?) { //When websocket receives a message from connection, this is called
-            Log.i("Websocket", "Message received ($message)")
             if (message != null) {
                 val text = message
                 parse(text.split(" "))
@@ -219,7 +209,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         override fun onError(ex: Exception?) {
-            Log.i("Websocket", "error $ex")
         }
 
     }
