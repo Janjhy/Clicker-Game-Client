@@ -203,8 +203,7 @@ class MainActivity : AppCompatActivity() {
 
         override fun onMessage(message: String?) { //When websocket receives a message from connection, this is called
             if (message != null) {
-                val text = message
-                parse(text.split(" "))
+                parse(message.split(" "))
             }
         }
 
