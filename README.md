@@ -23,3 +23,4 @@ In cases where the app does not seem to respond, try uninstalling the app and th
 There is a chance that the server has reset since the app was last launched.
 There is a possibility that the server is down and the application wont work.
 
+The server code is located in https://github.com/Janjhy/Clicker-Game-Server
