@@ -3,6 +3,8 @@
 How to run the app.
 Minimum Android 9 (API level 28) is required to reliably work.
 
+This app uses Internet permissions.
+
 Method 1.
 -Download Android Studio.
 -Clone this repository.
